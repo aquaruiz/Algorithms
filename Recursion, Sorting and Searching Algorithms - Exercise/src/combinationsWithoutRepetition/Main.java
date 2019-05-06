@@ -1,4 +1,4 @@
-package combinationswithoutRepetition;
+package combinationsWithoutRepetition;
 
 import java.util.Arrays;
 import java.util.Scanner;

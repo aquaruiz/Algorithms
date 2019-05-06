@@ -175,8 +175,7 @@ public class Main {
 		@SuppressWarnings("unused")
 		int cols = Integer.parseInt(scanner.nextLine());
 		
-		
-		matrix = new char[rows][];
+		matrix = new char[rows][cols];
 		
 		for (int i = 0; i < matrix.length; i++) {
 			matrix[i] = scanner.nextLine().toCharArray();

@@ -16,6 +16,8 @@ public class Main {
         		.map(Integer::parseInt).collect(Collectors.toCollection(LinkedList::new));
         int[] needles = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
+        scanner.close();
+        
         boolean isFound = false;
         
         for (int number : needles) {

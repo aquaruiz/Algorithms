@@ -34,5 +34,4 @@ public class Main {
 	private static void print() {
 		System.out.println(Arrays.stream(loops).mapToObj(String::valueOf).collect(Collectors.joining(" ")));
 	}
-
 }
