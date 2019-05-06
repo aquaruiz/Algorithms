@@ -2,18 +2,18 @@ package eightQueensPuzzle;
 
 import java.util.HashSet;
 import java.util.Set;
-
+ 
 public class EightQueens {
 	// total rows & total columns
+	
 	final static int size = 8;
+	static int solutionsFound = 0;
 	static boolean[][] chessboard = new boolean[size][size];
 	
 	static Set<Integer> attackedRows = new HashSet<>();
 	static Set<Integer> attackedColumns = new HashSet<>();
 	static Set<Integer> attackedLeftDiagonals = new HashSet<>();
 	static Set<Integer> attackedRightdiagonal = new HashSet<>();
-
-	static int solutionsFound = 0;
 	
 	static void putQueens(int row) {
 		if (row == size) {

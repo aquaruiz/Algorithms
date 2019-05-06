@@ -13,20 +13,19 @@ public class Main {
 		
 		int[] vector = new int[n];
 		gen01(vector, 0);
-		
 	}
 
 	private static void gen01(int[] vector, int index) {
 		if (index > vector.length - 1) {
 			System.out.println(Arrays.stream(vector)
 									.mapToObj(String::valueOf)
-									.collect(Collectors.joining("")));
-			return;
-		}
-		
-		for (int i = 0; i <= 1; i++) {
-			vector[index] = i;
+									.collect(Collectors.joining(" ")));
+		} else {
+			vector[index] = 0;
 			gen01(vector, index + 1);
+			vector[index] = 1;
+			gen01(vector, index + 1);
+			
 		}
 	}
 }

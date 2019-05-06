@@ -25,12 +25,12 @@ public class Main {
 		if (isExit(row, col)) {
 			printPath();
 		} else if (!isVisited(row, col) && isFree(row, col)) {
-			 mark(row, col);
-			 findPaths(row, col + 1, 'R');
-			 findPaths(row + 1, col, 'D');
-			 findPaths(row, col - 1, 'L');
-			 findPaths(row - 1, col, 'U');
-			 unmark(row, col);
+			mark(row, col);
+			findPaths(row, col + 1, 'R');
+			findPaths(row + 1, col, 'D');
+			findPaths(row, col - 1, 'L');
+			findPaths(row - 1, col, 'U');
+			unmark(row, col);
 		}
 		
 		path.remove(path.size() - 1);
@@ -81,8 +81,8 @@ public class Main {
 		for (int i = 0; i < row; i++) {
 			labyrint[i] = scanner.nextLine().toCharArray();
 		}
+	
 		scanner.close();
-		
 		return labyrint;
 	}
 }

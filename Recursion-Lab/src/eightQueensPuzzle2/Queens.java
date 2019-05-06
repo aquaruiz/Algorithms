@@ -1,4 +1,7 @@
-package eightQueensPuzzle;
+package eightQueensPuzzle2;
+
+import java.util.Scanner;
+
 /******************************************************************************
  *  Compilation:  javac Queens.java
  *  Execution:    java Queens n
@@ -43,17 +46,19 @@ package eightQueensPuzzle;
  ******************************************************************************/
 
 public class Queens {
-
    /***************************************************************************
     * Return true if queen placement q[n] does not conflict with
     * other queens q[0] through q[n-1]
     ***************************************************************************/
-    public static boolean isConsistent(int[] q, int n) {
+	static int foundSolutions = 0;
+
+	public static boolean isConsistent(int[] q, int n) {
         for (int i = 0; i < n; i++) {
             if (q[i] == q[n])             return false;   // same column
             if ((q[i] - q[n]) == (n - i)) return false;   // same major diagonal
             if ((q[n] - q[i]) == (n - i)) return false;   // same minor diagonal
         }
+        
         return true;
     }
 
@@ -67,9 +72,12 @@ public class Queens {
                 if (q[i] == j) System.out.print("Q ");
                 else           System.out.print("* ");
             }
+        
             System.out.println();
         }  
+        
         System.out.println();
+		foundSolutions++;
     }
 
 
@@ -92,10 +100,12 @@ public class Queens {
         }
     }  
 
-
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
+    	Scanner scanner = new Scanner(System.in);
+        int n = Integer.parseInt(scanner.nextLine());
+        scanner.close();
+        
         enumerate(n);
+        System.out.println(foundSolutions);
     }
-
 }

@@ -8,7 +8,6 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		
 		int nFactorial = Integer.parseInt(scanner.nextLine());
-		
 		scanner.close();
 		
 		long factorial = factorial(nFactorial);
@@ -22,5 +21,4 @@ public class Main {
 		
 		return n * factorial(n - 1);
 	}
-
 }
