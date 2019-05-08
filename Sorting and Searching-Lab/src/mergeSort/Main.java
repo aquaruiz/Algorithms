@@ -20,6 +20,6 @@ public class Main {
 		Integer[] arr = Arrays.stream(input.split(" ")).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
 		Mergesort.sort(arr);
 		
-		System.out.println(Arrays.stream(arr).map(String::valueOf).collect(Collectors.joining(" ")));
+		System.out.println(Arrays.toString(arr).replaceAll("[\\[\\],]", ""));
 	}
 }
