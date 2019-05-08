@@ -1,69 +1,74 @@
 package sorting;
 
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-	public static int[] tempArr;
+	// quick sort
+	public static int[] arr;
+	private static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		 
+		String[] tempArr = in.readLine().split(" ");
+		arr = new int[tempArr.length];
 		
-		int[] arr = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		for (int i = 0; i < tempArr.length; i++) {
+			arr[i] = Integer.parseInt(tempArr[i]);
+		}
 		
-		scanner.close();
+		sort(0, arr.length - 1);
+
+		StringBuilder sb = new StringBuilder();
 		
-		sort(arr);
-		System.out.println(Arrays.stream(arr).mapToObj(String::valueOf).collect(Collectors.joining(" ")));
+		for (int string : arr) {
+			sb.append(string).append(" ");
+		}
+		
+		System.out.println(sb.toString());
 	}
 
-	private static void sort(int[] arr) {
-		tempArr = new int[arr.length];
-		sort(arr, 0, arr.length - 1);
-	}
-
-	private static void sort(int[] arr, int lo, int hi) {
-		if (lo >= hi) {
+	public static void sort(int left, int right) {
+		if (left >= right) {
 			return;
 		}
 		
-		int mid = lo + (hi - lo) / 2;
-		sort(arr, lo, mid);
-		sort(arr, mid + 1, hi);
-		merge(arr, lo, mid, hi);
+		int pivot = partition(left, right);
+		sort(left, pivot - 1);
+		sort(pivot, right);
 	}
 
-	private static void merge(int[] arr, int lo, int mid, int hi) {
-		if (isLess(arr[mid], arr[mid + 1])) {
-			return;
-		}
+	private static int partition(int left, int right) {
+		int middleElement = arr[(left + right) / 2];
 		
-		for (int i = lo; i < hi + 1; i++) {
-			tempArr[i] = arr[i];
-		}
-		
-		int i = lo;
-		int j = mid + 1;
-		
-		for (int k = lo; k <= hi; k++) {
-			if (i > mid) {
-				arr[k] = tempArr[j];
-				j++;
-			} else if (j > hi) {
-				arr[k] = tempArr[i];
-				i++;
-			} else if (isLess(tempArr[i], tempArr[j])) {
-				arr[k] = tempArr[i];
-				i++;
-			} else {
-				arr[k] = tempArr[j];
-				j++;
+		while (left <= right) {
+			while (isLess(arr[left], middleElement)) {
+				left++;
+			}
+			
+			while (isLess(middleElement, arr[right])) {
+				right--;
+			}
+			
+			if (left <= right) {
+				swap(left, right);
+				
+				left++;
+				right--;
 			}
 		}
+		
+		return left;
 	}
 
 	private static boolean isLess(int current, int other) {
 		return current < other;
+	}
+
+	private static void swap(int first, int second) {
+		int temp = arr[first];
+		arr[first] = arr[second];
+		arr[second] = temp;
 	}
 }

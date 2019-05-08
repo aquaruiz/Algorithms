@@ -1,56 +1,73 @@
 package needles2;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.TreeMap;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		
-		int[] cn = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        List<Integer> numbers = Arrays.stream(scanner.nextLine().split(" "))
-        		.map(Integer::parseInt).collect(Collectors.toCollection(LinkedList::new));
-        int[] needles = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		TreeMap<Integer, Integer> numberIndexes = new TreeMap<>();
+		String[] counts = in.readLine().split(" ");
+		int numbersCount = Integer.parseInt(counts[0]);
+		int needlesCount = Integer.parseInt(counts[1]);
+	
+		String[] numbers = in.readLine().split(" ");
+		String[] needles = in.readLine().split(" ");
+		
+		fillSpecialMap(numberIndexes, numbersCount, 0, 0, numbers);
 
-        scanner.close();
-        
-        boolean isFound = false;
-        
-        for (int number : needles) {
-			for (int i = 0; i < numbers.size(); i++) {
+		for (int i = 0; i < needlesCount; i++) {
+			int currentNeedle = Integer.parseInt(needles[i]);
+			
+			try {
+				int searchedNumberKey = numberIndexes.containsKey(currentNeedle) ?
+						currentNeedle : numberIndexes.ceilingKey(currentNeedle);
+				int foundNumber = numberIndexes.get(searchedNumberKey);
+				sb.append(foundNumber).append(" ");
+			} catch (NullPointerException e) {
+				boolean hasFound = false;
 				
-				if (numbers.get(i) >= number) {
-					if (i > 0 && numbers.get(i - 1) == 0) {
-						for (int j = i - 1 ; j >=  0; j--) {
-							if (numbers.get(j) == 0) {
-								continue;
-							} else {
-								System.out.print(j + 1 + " ");
-								break;
-							}
-						}
-					} else {
-						System.out.print(i + " ");
+				for (int j = numbers.length - 1; j >= 0; j--) {
+					if (!numbers[j].equals("0")) {
+						sb.append(j  + 1).append(" ");
+						hasFound = true;
+						break;
 					}
-					
-					isFound = true;
-					break;
-				} 
+				}
 				
+				if (!hasFound) {
+					sb.append(0).append(" ");
+				}
+			}
+		}
+		
+		System.out.println(sb.toString());
+	}
+
+	private static void fillSpecialMap(TreeMap<Integer, Integer> numberIndexes, int numbersCount, int i, int j,
+			String[] numbers) {
+		int zeros = 0;
+		int index = 0;
+		
+		for (int k = 0; k < numbersCount; k++) {
+			int currentNumber = Integer.parseInt(numbers[k]);
+			
+			if (currentNumber != 0 && !numberIndexes.containsKey(currentNumber)) {
+				numberIndexes.put(currentNumber, index - zeros);
 			}
 			
-			if (!isFound && number > numbers.get(numbers.size() - 1)) {
-				System.out.print(numbers.size() + " ");
-				isFound = true;
+			if (currentNumber == 0) {
+				zeros++;
+			} else {
+				zeros = 0;
 			}
 			
-			if (!isFound) {
-				System.out.print(0 + " ");				
-			}
+			index++;
 		}
 	}
 }
