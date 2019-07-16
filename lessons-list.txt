@@ -1,0 +1,23 @@
+Алгоритми – юли 2019 - онлайн 
+
+    1 Resources
+    2 Course Introduction
+    3 Recursion, Sorting and Searching Algorithms
+    4 Recursion, Sorting and Searching Algorithms - Exercise
+    5 Combinatorial Algorithms
+    6 Greedy Algorithms
+    7 Combinatorial and Greedy Algorithms - Exercise
+    8 Dynamic Programming
+    9 Dynamic Programming - Part II
+    10 Dynamic Programming - Exercise
+    11 Graphs and Graph Algorithms
+    12 Advanced Graph Algorithms - Part I
+    13 Graphs and Graph Algorithms - Exercise
+    14 Advanced Graph Algorithms - Part II
+    15 Advanced Graph Algorithms - Exercise
+    16 Problem Solving Methodology
+    17 Solving Practical Problems
+    18 Exam Preparation
+    19 Exam Preparation
+    20 Exam
+    21 Retake Exam
