@@ -14,8 +14,47 @@ public class Main {
 		auxArr = new int[arr.length];
 		
 		mergeSort(0, arr.length - 1);
+//		impossible to beat judge with quick sort 
+//		quickSort(0, arr.length - 1);
 		printOutput();
 	}
+
+//	private static void quickSort(int low, int high) {
+//		int pivot;
+//		
+//		if (low > high) {
+//			return;
+//		}
+//		
+//		pivot = partArr(low, high);
+//		quickSort(low, pivot - 1);
+//		quickSort(pivot + 1, high);
+//	}
+
+//	private static int partArr(int low, int high) {
+//		int pivot = arr[low];
+//		
+//		while (low < high) {
+//			while (low < high && arr[high] >= pivot) {
+//				high--;
+//			}
+//			
+//			swap(low, high);
+//			
+//			while (low < high && arr[low] <= pivot) {
+//				low++;
+//			}
+//			swap(low, high);
+//		}
+//		
+//		return low;
+//	}
+//
+//	private static void swap(int i, int j) {
+//		int temp = arr[i];
+//		arr[i] = arr[j];
+//		arr[j] = temp;
+//	}
 
 	private static void printOutput() {
 		StringBuilder sBuilder = new StringBuilder();
