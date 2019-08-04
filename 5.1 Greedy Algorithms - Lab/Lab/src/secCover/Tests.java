@@ -19,16 +19,16 @@ public class Tests {
         sets.add(new int[]{11, 20, 30, 40});
         sets.add(new int[]{3, 7, 40});
 
-        List<int[]> selectedSets = Main.chooseSets(sets, universe);
-
         List<int[]> expectedResult = new ArrayList<>();
         expectedResult.add(sets.get(2));
         expectedResult.add(sets.get(1));
         expectedResult.add(sets.get(3));
         expectedResult.add(sets.get(4));
 
+        List<int[]> selectedSets = p02_secCover.chooseSets(sets, universe);
+
         for (int i = 0; i < selectedSets.size(); i++) {
-            Assert.assertEquals(selectedSets.get(i), expectedResult.get(i));
+            Assert.assertArrayEquals(selectedSets.get(i), expectedResult.get(i));
         }
     }
 
@@ -41,7 +41,7 @@ public class Tests {
         sets.add(new int[]{5});
         sets.add(new int[]{3});
 
-        List<int[]> selectedSets = Main.chooseSets(sets, universe);
+        List<int[]> selectedSets = p02_secCover.chooseSets(sets, universe);
 
         List<int[]> expectedResult = new ArrayList<>();
         expectedResult.add(sets.get(1));
@@ -50,7 +50,7 @@ public class Tests {
         expectedResult.add(sets.get(3));
 
         for (int i = 0; i < selectedSets.size(); i++) {
-            Assert.assertEquals(selectedSets.get(i), expectedResult.get(i));
+            Assert.assertArrayEquals(selectedSets.get(i), expectedResult.get(i));
         }
     }
 
@@ -63,13 +63,13 @@ public class Tests {
         sets.add(new int[]{5});
         sets.add(new int[]{3});
 
-        List<int[]> selectedSets = Main.chooseSets(sets, universe);
+        List<int[]> selectedSets = p02_secCover.chooseSets(sets, universe);
 
         List<int[]> expectedResult = new ArrayList<>();
         expectedResult.add(sets.get(0));
 
         for (int i = 0; i < selectedSets.size(); i++) {
-            Assert.assertEquals(selectedSets.get(i), expectedResult.get(i));
+            Assert.assertArrayEquals(selectedSets.get(i), expectedResult.get(i));
         }
     }
 
@@ -83,14 +83,14 @@ public class Tests {
         sets.add(new int[]{4, 5});
         sets.add(new int[]{1, 3, 4, 6});
 
-        List<int[]> selectedSets = Main.chooseSets(sets, universe);
+        List<int[]> selectedSets = p02_secCover.chooseSets(sets, universe);
 
         List<int[]> expectedResult = new ArrayList<>();
         expectedResult.add(sets.get(4));
         expectedResult.add(sets.get(0));
 
         for (int i = 0; i < selectedSets.size(); i++) {
-            Assert.assertEquals(selectedSets.get(i), expectedResult.get(i));
+            Assert.assertArrayEquals(selectedSets.get(i), expectedResult.get(i));
         }
     }
 }
